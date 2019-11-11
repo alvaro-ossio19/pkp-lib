@@ -1,3 +1,52 @@
+PKP Web Application Library para OJS 3.1.2 (SIDISI)
+=======
+
+> Esta es una version personalizada de la librería PKP para SIDISI. Esta versión de la librería es 3.1.2, que corresponse a la versión 3.1.2 de OJS.
+
+# Instalación
+
+Ejecutar en terminal en la carpeta de OJS:
+
+    $ git submodule add https://github.com/alvaro-ossio19/pkp-lib.git  lib/pkp
+
+Esto habrá agregado la librería como submodulo en OJS en el archivo .gitmodules:
+
+[submodule "lib/pkp"]
+	path = lib/pkp
+	url = https://github.com/alvaro-ossio19/pkp-lib.git
+
+Verificar los repositorios remotos del proyecto:
+
+    $ git remote -v
+    > origin  https://github.com/alvaro-ossio19/pkp-lib.git (fetch)
+    > origin  https://github.com/alvaro-ossio19/pkp-lib.git (push)
+
+Si no existe el repositorio original, hacer lo siguiente:
+
+    $ git remote add upstream https://github.com/pkp/pkp-lib.git
+
+Volvemos a verificar los repositorios remotos:
+
+    $ git remote -v
+    > origin        https://github.com/alvaro-ossio19/pkp-lib.git (fetch)
+    > origin        https://github.com/alvaro-ossio19/pkp-lib.git (push)
+    > upstream      https://github.com/pkp/pkp-lib.git (fetch)
+    > upstream      https://github.com/pkp/pkp-lib.git (push)
+
+# Actualización con repositorio padre
+
+Vamos a la rama stable-3_1_2 (bifurcación):
+
+    $ git remote update
+    $ git fetch
+    $ git checkout --track origin/stable-3_1_2
+
+Para fusionar los cambios del repositorio padre desde upstream/stable-3_1_2 con la rama origin/stable-3_1_2 (bifurcación):
+
+    $ git pull upstream stable-3_1_2
+    $ git push
+
+
 PKP Web Application Library
 =======
 
