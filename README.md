@@ -46,6 +46,11 @@ Para fusionar los cambios del repositorio padre desde upstream/stable-3_1_2 con 
     $ git pull upstream stable-3_1_2
     $ git push
 
+Vamos a la raíz de OJS para instalar o actualizar dependencias con Composer (https://getcomposer.org/):
+
+    $ cd ../..
+    $ composer --working-dir=lib/pkp update
+
 
 PKP Web Application Library
 =======
