@@ -619,6 +619,9 @@ abstract class PKPSubmissionService extends PKPBaseEntityPropertyService {
 			'id','fullTitle','status','submissionProgress','stages','reviewRounds','reviewAssignments',
 			'locale', 'urlWorkflow','urlAuthorWorkflow','urlEditorialWorkflow','urlPublished','_href',
 			'dateStatusModified',
+
+			// [UPCH] Para poder usar el codigo SIDISI en las tablas de submissions
+			'pages'
 		);
 
 		if ($this->canUserViewAuthor($currentUser, $submission)) {
