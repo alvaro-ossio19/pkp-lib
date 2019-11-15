@@ -179,6 +179,10 @@ abstract class PKPBackendSubmissionsHandler extends APIHandler {
 	 */
 	public function deleteSubmission($slimRequest, $response, $args) {
 
+		// [UPCH] No se permite la eliminacion de submissions desde la api
+		return $response->withStatus(403)->withJsonError('api.submissions.403.unauthorizedDeleteSubmission');
+		// [/UPCH]
+
 		$request = $this->getRequest();
 		$currentUser = $request->getUser();
 		$context = $request->getContext();

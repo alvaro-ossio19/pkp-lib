@@ -251,6 +251,9 @@ abstract class PKPSubmissionService extends PKPBaseEntityPropertyService {
 	 */
 	public function canCurrentUserDelete($submission) {
 
+		// [UPCH] Ningun usuario del sistema tendra permisos para eliminar submissions
+		return false;
+
 		if (!is_a($submission, 'Submission')) {
 			$submissionDao = Application::getSubmissionDAO();
 			$submission = $submissionDao->getById((int) $submission);
