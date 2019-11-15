@@ -93,6 +93,12 @@ abstract class PKPSubmissionHandler extends Handler {
 		$templateMgr->assign('sectionId', (int) $request->getUserVar('sectionId')); // to add a sectionId parameter to tab links in template
 
 		$submission = $this->getAuthorizedContextObject(ASSOC_TYPE_SUBMISSION);
+
+		// [UPCH] Bloquear la creacion manual de submissions ya que estos son creados por SIDISI
+		if (empty($args) || is_null($submission) || !($submission instanceof Article)) {
+			exit(UPCH_DISABLED_BY_SIDISI_MESSAGE);
+		}
+
 		if ($submission) {
 			$templateMgr->assign('submissionId', $submission->getId());
 			$templateMgr->assign('submissionProgress', (int) $submission->getSubmissionProgress());

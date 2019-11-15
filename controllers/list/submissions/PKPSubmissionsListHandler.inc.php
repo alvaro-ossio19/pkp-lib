@@ -196,6 +196,10 @@ abstract class PKPSubmissionsListHandler extends ListHandler {
 			'REVIEW_ROUND_STATUS_RECOMMENDATIONS_COMPLETED' => REVIEW_ROUND_STATUS_RECOMMENDATIONS_COMPLETED,
 		);
 
+		// [UPCH] no mostrar el boton de crear nuevos submissions en esta instancia de OJS.
+        $config['currentUserCanAddSubmission'] = false;
+        // [/UPCH]
+
 		return $config;
 	}
 
