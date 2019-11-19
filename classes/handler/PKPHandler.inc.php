@@ -233,6 +233,14 @@ class PKPHandler {
 	}
 
 	/**
+	 * [UPCH]
+	 * Clear all assignment of roles to operation names.
+	 */
+	function UPCH_clearRoleAssignments() {
+		$this->_roleAssignments = array();
+	}
+
+	/**
 	 * Flag role assignment checking as completed.
 	 */
 	function markRoleAssignmentsChecked() {

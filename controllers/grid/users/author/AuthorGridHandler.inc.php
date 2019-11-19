@@ -36,6 +36,16 @@ class AuthorGridHandler extends GridHandler {
 				'updateAuthor', 'deleteAuthor', 'saveSequence'));
 		$this->addRoleAssignment(ROLE_ID_REVIEWER, array('fetchGrid', 'fetchRow'));
 		$this->addRoleAssignment(array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR, ROLE_ID_ASSISTANT), array('addUser'));
+
+		// [UPCH]
+		// Quitar permisos en la tabla autores
+		// Primero limpiamos los roles ya establecidos arriba.
+		$this->UPCH_clearRoleAssignments(); // funcion creada por UPCH
+		$this->addRoleAssignment(
+				array(ROLE_ID_MANAGER, ROLE_ID_SUB_EDITOR, ROLE_ID_ASSISTANT, ROLE_ID_AUTHOR, ROLE_ID_REVIEWER),
+				array('fetchGrid', 'fetchRow')
+		);
+		// [/UPCH]
 	}
 
 
@@ -165,6 +175,9 @@ class AuthorGridHandler extends GridHandler {
 				$cellProvider
 			)
 		);
+
+		// [UPCH] siempre readonly en true
+		$this->setReadOnly(true);
 	}
 
 
@@ -227,6 +240,9 @@ class AuthorGridHandler extends GridHandler {
 	 * @return boolean
 	 */
 	function canAdminister($user) {
+		// [UPCH] No permitir la edicion de autores a ningun usuario
+		return false;
+
 		$submission = $this->getSubmission();
 
 		// Incomplete submissions can be edited. (Presumably author.)
