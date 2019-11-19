@@ -60,6 +60,7 @@ class PKPAuthor extends Identity {
 	}
 
 	/**
+	 * lib/pkp/classes/identity/Identity.inc.php
 	 * @copydoc Identity::getFullName()
 	 */
 	function getFullName($preferred = true, $familyFirst = false, $defaultLocale =  null) {
@@ -206,6 +207,42 @@ class PKPAuthor extends Identity {
 	function getLocalizedUserGroupName() {
 		$userGroup = $this->getUserGroup();
 		return $userGroup->getLocalizedName();
+	}
+
+	/**
+	 * [UPCH]
+	 * Get SIDISI participant Id (tabla protocolo_participante de SIDISI).
+	 * @return boolean
+	 */
+	function getSidisiParticipantId() {
+		return $this->getData('sidisiParticipantId');
+	}
+
+	/**
+	 * [UPCH]
+	 * Set SIDISI participant Id (tabla protocolo_participante de SIDISI).
+	 * @param $sidisiParticipantId integer
+	 */
+	function setSidisiParticipantId($sidisiParticipantId) {
+		$this->setData('sidisiParticipantId', $sidisiParticipantId);
+	}
+
+	/**
+	 * [UPCH]
+	 * Get SIDISI role label.
+	 * @return boolean
+	 */
+	function getSidisiRoleLabel() {
+		return $this->getData('sidisiRoleLabel');
+	}
+
+	/**
+	 * [UPCH]
+	 * Set SIDISI role label.
+	 * @param $sidisiRoleLabel string
+	 */
+	function setSidisiRoleLabel($sidisiRoleLabel) {
+		$this->setData('sidisiRoleLabel', $sidisiRoleLabel);
 	}
 }
 

@@ -129,6 +129,22 @@ class AuthorGridHandler extends GridHandler {
 
 		// Columns
 		$cellProvider = new PKPAuthorGridCellProvider();
+		/**
+		 * [UPCH]
+		 * Mostrar el id del participante en SIDISI (tabla protocolo_participante).
+		 *
+		 * Funcion: getTemplateVarsFromRowColumn()
+		 * Clase: lib/pkp/controllers/grid/users/author/PKPAuthorGridCellProvider.inc.php
+		 */
+		// $this->addColumn(
+		// 	new GridColumn(
+		// 		's_author_id',
+		// 		'ID',
+		// 		null,
+		// 		null,
+		// 		$cellProvider
+		// 	)
+		// );
 		$this->addColumn(
 			new GridColumn(
 				'name',
@@ -148,9 +164,17 @@ class AuthorGridHandler extends GridHandler {
 				$cellProvider
 			)
 		);
+		/**
+		 * [UPCH]
+		 * Se ha personalizado para mostrar la columna sidisi_role_label
+		 * de la tabla authors.
+		 *
+		 * Funcion: getTemplateVarsFromRowColumn()
+		 * Clase: lib/pkp/controllers/grid/users/author/PKPAuthorGridCellProvider.inc.php
+		 */
 		$this->addColumn(
 			new GridColumn(
-				'role',
+				's_role_label', // 'role',
 				'author.users.contributor.role',
 				null,
 				null,

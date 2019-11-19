@@ -281,6 +281,12 @@ abstract class Submission extends DataObject {
 			$familyName = $author->getLocalizedFamilyName();
 			$str .= ($familyOnly && !empty($familyName)) ? $familyName : $author->getFullName($preferred);
 			$lastUserGroupId = $author->getUserGroupId();
+
+			// [UPCH]
+			// Concatenar el role de SIDISI del autor
+			$sRoleLabel = $author->getSidisiRoleLabel();
+			$str .= ($sRoleLabel)? " ({$sRoleLabel})" : '';
+			// [/UPCH]
 		}
 
 		// If there needs to be a trailing user group title, add it

@@ -134,6 +134,13 @@ abstract class PKPAuthorDAO extends DAO {
 		$author->setIncludeInBrowse($row['include_in_browse']);
 		$author->_setShowTitle($row['show_title']); // Dependent
 
+		// [UPCH]
+		// nueva columna para almacenar el id del participante de sidisi
+		$author->setSidisiParticipantId($row['sidisi_participant_id']);
+		// nueva columna para almacenar el rol label de sidisi
+		$author->setSidisiRoleLabel($row['sidisi_role_label']);
+		// [/UPCH]
+
 		$this->getDataObjectSettings('author_settings', 'author_id', $row['author_id'], $author);
 
 		HookRegistry::call('AuthorDAO::_fromRow', array(&$author, &$row));

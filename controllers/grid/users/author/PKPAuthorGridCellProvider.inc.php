@@ -42,6 +42,20 @@ class PKPAuthorGridCellProvider extends DataObjectGridCellProvider {
 				return array('isPrincipalContact' => $element->getPrimaryContact());
 			case 'includeInBrowse':
 				return array('includeInBrowse' => $element->getIncludeInBrowse());
+
+			/**
+			 * [UPCH]
+			 * Mostrar id del participante SIDISI (tabla protocolo_participante).
+			 */
+			case 's_author_id':
+				return array('label' => $element->getSidisiParticipantId());
+			/**
+			 * [UPCH]
+			 * Por defecto mostrar la columna sidisi_role_label de la tabla authors.
+			 * Este reemplazara al rol Autor/a de OJS.
+			 */
+			case 's_role_label':
+				return array('label' => $element->getSidisiRoleLabel());
 		}
 	}
 }
