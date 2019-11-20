@@ -1045,6 +1045,25 @@ abstract class Submission extends DataObject {
 	 * @return string|null
 	 */
 	abstract function _getContextLicenseFieldValue($locale, $field);
+
+	/**
+	 * [UPCH]
+	 * Get SIDISI Id.
+	 * @return string
+	 */
+	function getSidisiId() {
+		return $this->getData('sidisiId');
+	}
+
+	/**
+	 * [UPCH]
+	 * Set SIDISI Id.
+	 * Utilizarlo en la funcion _fromRow() de la clase lib/pkp/classes/submission/SubmissionDAO.inc.php
+	 * @param $sidisiId string
+	 */
+	function setSidisiId($sidisiId) {
+		$this->setData('sidisiId', $sidisiId);
+	}
 }
 
 

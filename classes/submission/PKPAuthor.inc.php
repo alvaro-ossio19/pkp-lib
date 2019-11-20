@@ -221,6 +221,7 @@ class PKPAuthor extends Identity {
 	/**
 	 * [UPCH]
 	 * Set SIDISI participant Id (tabla protocolo_participante de SIDISI).
+	 * Utilizarlo en la funcion _fromRow() de la clase lib/pkp/classes/submission/PKPAuthorDAO.inc.php
 	 * @param $sidisiParticipantId integer
 	 */
 	function setSidisiParticipantId($sidisiParticipantId) {
@@ -239,6 +240,7 @@ class PKPAuthor extends Identity {
 	/**
 	 * [UPCH]
 	 * Set SIDISI role label.
+	 * Utilizarlo en la funcion _fromRow() de la clase lib/pkp/classes/submission/PKPAuthorDAO.inc.php
 	 * @param $sidisiRoleLabel string
 	 */
 	function setSidisiRoleLabel($sidisiRoleLabel) {

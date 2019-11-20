@@ -370,7 +370,7 @@ abstract class PKPSubmissionListQueryBuilder extends BaseQueryBuilder {
 						if (ctype_digit($word)) {
 							$q->orWhere('s.submission_id', '=', $word);
 							// [UPCH] searchPhrase tambien debe filtrar por codigo sidisi
-							$q->orWhere('s.pages', 'LIKE', "%{$word}%");
+							$q->orWhere('s.sidisi_id', 'LIKE', "%{$word}%");
 						}
 					});
 				}

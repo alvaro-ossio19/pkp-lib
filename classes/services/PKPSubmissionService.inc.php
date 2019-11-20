@@ -541,6 +541,14 @@ abstract class PKPSubmissionService extends PKPBaseEntityPropertyService {
 				case 'reviewRounds':
 					$values[$prop] = $this->getPropertyReviewRounds($submission);
 					break;
+
+				/**
+				 * [UPCH]
+				 * Agregando codigo sidisi como propiedad del submission.
+				 */
+				case 'sidisi_id':
+					$values[$prop] = $submission->getSidisiId();
+					break;
 			}
 		}
 
@@ -623,8 +631,10 @@ abstract class PKPSubmissionService extends PKPBaseEntityPropertyService {
 			'locale', 'urlWorkflow','urlAuthorWorkflow','urlEditorialWorkflow','urlPublished','_href',
 			'dateStatusModified',
 
-			// [UPCH] Para poder usar el codigo SIDISI en las tablas de submissions
-			'pages'
+			// [UPCH]
+			// Para poder usar el codigo SIDISI en las tablas de submissions.
+			// No olvidar agregar sidisi_id a la funcion getProperties() de esta clase.
+			'sidisi_id'
 		);
 
 		if ($this->canUserViewAuthor($currentUser, $submission)) {

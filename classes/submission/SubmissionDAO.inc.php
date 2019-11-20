@@ -113,6 +113,11 @@ abstract class SubmissionDAO extends DAO implements PKPPubIdPluginDAO {
 		$submission->setLanguage($row['language']);
 		$submission->setCitations($row['citations']);
 
+		// [UPCH]
+		// nueva columna para almacenar el id del participante de sidisi
+		$submission->setSidisiId($row['sidisi_id']);
+		// [/UPCH]
+
 		$this->getDataObjectSettings('submission_settings', 'submission_id', $submission->getId(), $submission);
 
 		return $submission;
