@@ -24,6 +24,14 @@
 	{assign var="passwordRequired" value="true"}
 {/if}{* !$userId *}
 
+{if $isAdminUser}
+<div class="pkp_notification">
+  <div class="notifyInfo">
+    <span class="title">Usted está logueado como Administrador.</span>
+  </div>
+</div>
+{/if}{* $isAdminUser*}
+
 <form class="pkp_form" id="userDetailsForm" method="post" action="{url router=$smarty.const.ROUTE_COMPONENT component="grid.settings.user.UserGridHandler" op="updateUser"}">
 	{csrf}
 	<input type="hidden" id="sitePrimaryLocale" name="sitePrimaryLocale" value="{$sitePrimaryLocale|escape}" />

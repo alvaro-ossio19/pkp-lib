@@ -47,12 +47,24 @@
 
 	{fbvFormSection title="common.name"}
 		{fbvElement type="text" label="user.givenName" multilingual="true" name="givenName" id="givenName" value=$givenName maxlength="255" inline=true size=$fbvStyles.size.MEDIUM required="true"}
-		{fbvElement type="text" label="user.familyName" multilingual="true" name="familyName" id="familyName" value=$familyName maxlength="255" inline=true size=$fbvStyles.size.MEDIUM}
+		{fbvElement type="text" label="user.familyName" multilingual="true" name="familyName" id="familyName" value=$familyName maxlength="255" inline=true size=$fbvStyles.size.MEDIUM required="true"} {* [UPCH] apellido es requerido *}
 	{/fbvFormSection}
 
+	<div class="pkp_notification">
+		<div class="notifyWarning">
+			<span class="title">Sobre "Identificación del usuario"</span>
+			<span class="description">
+				<p>
+				Para dar acceso a un <strong>usuario de Intranet</strong>, el siguiente campo deberá ser un DNI, 
+				carnet de extranjería o pasaporte.
+				</p>
+			</span>
+		</div>
+	</div>
+
 	{fbvFormSection title="user.username" required="true"}
-		{fbvElement type="text" label="user.register.usernameRestriction" id="username" required="true" value=$username size=$fbvStyles.size.MEDIUM inline=true}
-		{fbvElement type="button" label="common.suggest" id="suggestUsernameButton" inline=true class="default"}
+		{fbvElement type="text" id="username" required="true" value=$username size=$fbvStyles.size.MEDIUM inline=true} {* [UPCH] sin label *}
+		{*fbvElement type="button" label="common.suggest" id="suggestUsernameButton" inline=true class="default"*} {* [UPCH] sin boton sugerir *}
 	{/fbvFormSection}
 
 	{fbvFormSection title="user.email" required="true"}

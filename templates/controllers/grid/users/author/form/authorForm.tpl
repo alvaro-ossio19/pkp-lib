@@ -21,6 +21,7 @@
 	{csrf}
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="authorFormNotification"}
 
+	{* [UPCH] agregar variable isAdminUser *}
 	{include
 		file="common/userDetails.tpl"
 		disableUserNameSection=true
@@ -36,6 +37,7 @@
 		disableSignatureSection=true
 		extraContentSectionUnfolded=true
 		countryRequired=true
+		isAdminUser=false
 	}
 
 	{fbvFormArea id="submissionSpecific"}

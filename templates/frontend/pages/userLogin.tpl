@@ -28,6 +28,15 @@
 	<form class="cmp_form cmp_form login" id="login" method="post" action="{$loginUrl}">
 		{csrf}
 
+		<div class="pkp_notification" style="margin-bottom: 10px;">
+			<div class="notifyInfo">
+			<span class="title">Credenciales:</span>
+			<span class="description">
+				Debe acceder usando su usuario y contraseña de Intranet UPCH.
+			</span>
+			</div>
+		</div>
+
 		{if $error}
 			<div class="pkp_form_error">
 				{translate key=$error reason=$reason}
@@ -77,12 +86,12 @@
 					{translate key="user.login"}
 				</button>
 
-				{if !$disableUserReg}
+				{*if !$disableUserReg}
 					{capture assign=registerUrl}{url page="user" op="register" source=$source}{/capture}
 					<a href="{$registerUrl}" class="register">
 						{translate key="user.login.registerNewAccount"}
 					</a>
-				{/if}
+				{/if*}
 			</div>
 		</fieldset>
 	</form>

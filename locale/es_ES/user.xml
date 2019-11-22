@@ -63,7 +63,7 @@
 	<message key="user.mailingAddress">Dirección postal</message>
 	<message key="user.middleName">Segundo Nombre</message>
 	<message key="user.myAccount">Mi cuenta</message>
-	<message key="user.name">Nombre</message>
+	<message key="user.name">Nombre usuario</message><!-- [UPCH] -->
 	<message key="user.password">Contraseña</message>
 	<message key="user.repeatPassword">Repita la contraseña</message>
 	<message key="user.phone">Teléfono</message>
@@ -132,7 +132,7 @@
 	<message key="user.title">Título</message>
 	<message key="user.url">URL</message>
 	<message key="user.userHome">Inicio</message>
-	<message key="user.username">Nombre usuario</message>
+	<message key="user.username">Identificación del usuario</message><!-- [UPCH] -->
 	<message key="user.workingLanguages">Idiomas de trabajo</message>
 	<message key="user.authorization.accessibleWorkflowStage">Actualmente no tiene acceso a esta fase del proceso de trabajo.</message>
 	<message key="user.authorization.workflowStageRequired">No se ha especificado ninguna fase del proceso de trabajo.</message>

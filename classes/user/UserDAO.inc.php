@@ -322,6 +322,15 @@ class UserDAO extends DAO {
 		if ($user->getDateLastLogin() == null) {
 			$user->setDateLastLogin(Core::getCurrentDate());
 		}
+
+		// [UPCH]
+		$authId = $user->getAuthId();
+		// si la fuente de autentificacion es ldap, must_change_password debe ser 0
+		if (!$authId && (int) $authId === UPCH_SETTING_AUTH_ID_LDAP) {
+			$user->setMustChangePassword(false);
+		}
+		// [/UPCH]
+
 		$this->update(
 			sprintf('INSERT INTO users
 				(username, password, email, url, phone, mailing_address, billing_address, country, locales, date_last_email, date_registered, date_validated, date_last_login, must_change_password, disabled, disabled_reason, auth_id, auth_str, inline_help, gossip)
@@ -391,6 +400,14 @@ class UserDAO extends DAO {
 		}
 
 		$this->updateLocaleFields($user);
+
+		// [UPCH]
+		$authId = $user->getAuthId();
+		// si la fuente de autentificacion es ldap, must_change_password debe ser 0
+		if (!$authId && (int) $authId === UPCH_SETTING_AUTH_ID_LDAP) {
+			$user->setMustChangePassword(false);
+		}
+		// [/UPCH]
 
 		return $this->update(
 			sprintf('UPDATE	users

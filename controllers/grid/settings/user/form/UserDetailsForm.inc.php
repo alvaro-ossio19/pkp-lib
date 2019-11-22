@@ -51,11 +51,13 @@ class UserDetailsForm extends UserForm {
 			$this->addCheck(new FormValidatorUsername($this, 'username', 'required', 'user.register.form.usernameAlphaNumeric'));
 
 			if (!Config::getVar('security', 'implicit_auth')) {
+				if (Validation::isSiteAdmin()) { // [UPCH] si el usuario es administrador, el password sera requerido
 				$this->addCheck(new FormValidator($this, 'password', 'required', 'user.profile.form.passwordRequired'));
 				$this->addCheck(new FormValidatorLength($this, 'password', 'required', 'user.register.form.passwordLengthRestriction', '>=', $site->getMinPasswordLength()));
 				$this->addCheck(new FormValidatorCustom($this, 'password', 'required', 'user.register.form.passwordsDoNotMatch', function($password) use ($form) {
 					return $password == $form->getData('password2');
 				}));
+				}
 			}
 		} else {
 			$userDao = DAORegistry::getDAO('UserDAO');
@@ -139,7 +141,7 @@ class UserDetailsForm extends UserForm {
 			);
 		} else {
 			$data = array(
-				'mustChangePassword' => true,
+				'mustChangePassword' => false, // [UPCH] por defecto
 			);
 		}
 		foreach($data as $key => $value) {
@@ -181,6 +183,9 @@ class UserDetailsForm extends UserForm {
 		if (!empty($authSourceOptions)) {
 			$templateMgr->assign('authSourceOptions', $authSourceOptions);
 		}
+
+		// [UPCH] si el usuario logueado es administrador, se usara para restringir campos
+		$templateMgr->assign('isAdminUser', Validation::isSiteAdmin());
 
 		return parent::display($request, $template);
 	}
@@ -259,7 +264,8 @@ class UserDetailsForm extends UserForm {
 		$this->user->setCountry($this->getData('country'));
 		$this->user->setBiography($this->getData('biography'), null); // Localized
 		$this->user->setMustChangePassword($this->getData('mustChangePassword') ? 1 : 0);
-		$this->user->setAuthId((int) $this->getData('authId'));
+		// [UPCH] solo el administrador puede establecer una fuente de autentificacion
+		$this->user->setAuthId((Validation::isSiteAdmin()) ? (int) $this->getData('authId') : UPCH_SETTING_AUTH_ID_LDAP);
 		// Users can never view/edit their own gossip fields
 		import('classes.core.ServicesContainer');
 		$userService = ServicesContainer::instance()->get('user');
@@ -285,11 +291,14 @@ class UserDetailsForm extends UserForm {
 
 		parent::execute();
 
+		// [UPCH] para actualizar usuario
 		if ($this->user->getId() != null) {
-			if ($this->getData('password') !== '') {
+			// [UPCH] si el administrador establecio una contraseña interna
+			if (Validation::isSiteAdmin() && $this->getData('password') !== '') {
 				if (isset($auth)) {
 					$auth->doSetUserPassword($this->user->getUsername(), $this->getData('password'));
 					$this->user->setPassword(Validation::encryptCredentials($this->user->getId(), Validation::generatePassword())); // Used for PW reset hash only
+					$this->user->setMustChangePassword(false); // [UPCH] no se debe pedir cambiar password
 				} else {
 					$this->user->setPassword(Validation::encryptCredentials($this->user->getUsername(), $this->getData('password')));
 				}
@@ -303,6 +312,7 @@ class UserDetailsForm extends UserForm {
 			$userDao->updateObject($this->user);
 
 		} else {
+			// [UPCH] para crear usuario
 			$this->user->setUsername($this->getData('username'));
 			if ($this->getData('generatePassword')) {
 				$password = Validation::generatePassword();
@@ -312,15 +322,26 @@ class UserDetailsForm extends UserForm {
 				$sendNotify = $this->getData('sendNotify');
 			}
 
+			// [UPCH] si el administrador establecio una contraseña interna
+			if (Validation::isSiteAdmin() && $this->getData('password') !== '') {
+
 			if (isset($auth)) {
 				$this->user->setPassword($password);
 				// FIXME Check result and handle failures
 				$auth->doCreateUser($this->user);
 				$this->user->setAuthId($auth->authId);
 				$this->user->setPassword(Validation::encryptCredentials($this->user->getId(), Validation::generatePassword())); // Used for PW reset hash only
+				// [UPCH] si se establece una fuente de autentificacion, no se debe pedir cambiar password
+				$this->user->setMustChangePassword(false);
 			} else {
 				$this->user->setPassword(Validation::encryptCredentials($this->getData('username'), $password));
 			}
+
+			} else { // [UPCH] (Validation::isSiteAdmin() && $this->getData('password') !== '')
+				$this->user->setPassword(Validation::encryptCredentials($this->user->getId(), Validation::generatePassword())); // Used for PW reset hash only
+				$this->user->setMustChangePassword(false);
+			}
+			// [/UPCH]
 
 			$this->user->setDateRegistered(Core::getCurrentDate());
 			$userId = $userDao->insertObject($this->user);

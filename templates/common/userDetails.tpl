@@ -24,9 +24,9 @@
  *}
 
 {fbvFormArea id="userDetails"}
-	{fbvFormSection title="user.name"}
+	{fbvFormSection title="user.name" for="givenName"}
 		{fbvElement type="text" label="user.givenName" multilingual="true" name="givenName" id="givenName" value=$givenName maxlength="255" inline=true size=$fbvStyles.size.MEDIUM required="true"}
-		{fbvElement type="text" label="user.familyName" multilingual="true" name="familyName" id="familyName" value=$familyName maxlength="255" inline=true size=$fbvStyles.size.MEDIUM}
+		{fbvElement type="text" label="user.familyName" multilingual="true" name="familyName" id="familyName" value=$familyName maxlength="255" inline=true size=$fbvStyles.size.MEDIUM required="true"} {* [UPCH] apellido es requerido *}
 	{/fbvFormSection}
 
 	{fbvFormSection for="preferredPublicName" description="user.preferredPublicName.description"}
@@ -35,10 +35,24 @@
 
 	{if !$disableUserNameSection}
 		{if !$userId}{capture assign="usernameInstruction"}{translate key="user.register.usernameRestriction"}{/capture}{/if}
-		{fbvFormSection for="username" description=$usernameInstruction translate=false}
+		{fbvFormSection} {* se eliminan atributos: for="username" description=$usernameInstruction translate=false *}
 			{if !$userId}
-				{fbvElement type="text" label="user.username" id="username" required="true" value=$username maxlength="32" inline=true size=$fbvStyles.size.MEDIUM}
-				{fbvElement type="button" label="common.suggest" id="suggestUsernameButton" inline=true class="default"}
+				{* [UPCH] informacion sobre identificacion del usuario *}
+				<div class="pkp_notification">
+					<div class="notifyWarning">
+						<span class="title">Sobre "Identificación del usuario"</span>
+						<span class="description">
+							<p>
+							Para dar acceso a un <strong>usuario de Intranet UPCH</strong>, el siguiente campo deberá ser un DNI, 
+							carnet de extranjería o pasaporte.
+							</p>
+						</span>
+					</div>
+				</div>
+				{fbvFormSection title="user.username" for="username"}
+					{fbvElement type="text" label="user.username" name="username" id="username" required="true" value=$username maxlength="32" inline=true size=$fbvStyles.size.MEDIUM}
+					{*fbvElement type="button" label="common.suggest" id="suggestUsernameButton" inline=true class="default"*} {* [UPCH] sin boton sugerir *}
+				{/fbvFormSection}
 			{else}
 				{fbvFormSection title="user.username" suppressId="true"}
 					{$username|escape}
@@ -48,18 +62,32 @@
 	{/if}
 
 	{if !$disableEmailSection}
-		{fbvFormSection title="about.contact"}
-			{fbvElement type="text" label="user.email" id="email" required="true" value=$email maxlength="90" size=$fbvStyles.size.MEDIUM}
+		{fbvFormSection title="about.contact" for="email"}
+			{fbvElement type="text" label="user.email" name="email" id="email" required="true" value=$email maxlength="90" size=$fbvStyles.size.MEDIUM}
 		{/fbvFormSection}
 	{/if}
 
-	{if !$disableAuthSourceSection}
+	{* [UPCH] solo para administradores *}
+	{if $isAdminUser and !$disableAuthSourceSection}
+		{* [UPCH] informacion sobre fuente de autentificacion *}
+		<div class="pkp_notification">
+			<div class="notifyWarning">
+				<span class="title">Sobre "Fuente de autentificación"</span>
+				<span class="description">
+					<p>
+					Si selecciona <strong>LDAP UPCH</strong> como fuente de autenticación, el usuario deberá ingresar con su nombre de usuario 
+					establecido y contraseña de Intranet.
+					</p>
+				</span>
+			</div>
+		</div>
 		{fbvFormSection title="grid.user.authSource" for="authId"}
 			{fbvElement type="select" name="authId" id="authId" defaultLabel="" defaultValue="" from=$authSourceOptions translate="true" selected=$authId}
 		{/fbvFormSection}
 	{/if}
 
-	{if !$disablePasswordSection}
+	{* [UPCH] solo para administradores *}
+	{if $isAdminUser and !$disablePasswordSection}
 		{if $userId}{capture assign="passwordInstruction"}{translate key="user.profile.leavePasswordBlank"} {translate key="user.register.form.passwordLengthRestriction" length=$minPasswordLength}{/capture}{/if}
 		{fbvFormArea id="passwordSection" title="user.password"}
 			{fbvFormSection for="password" description=$passwordInstruction translate=false}

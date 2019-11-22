@@ -94,7 +94,7 @@ class CreateReviewerForm extends ReviewerForm {
 
 		$authDao = DAORegistry::getDAO('AuthSourceDAO');
 		$auth = $authDao->getDefaultPlugin();
-		$user->setAuthId($auth?$auth->getAuthId():0);
+		$user->setAuthId((Validation::isSiteAdmin() && $auth)?$auth->getAuthId():UPCH_SETTING_AUTH_ID_LDAP); // [UPCH]
 		$user->setInlineHelp(1); // default new reviewers to having inline help visible
 
 		$user->setUsername($this->getData('username'));
@@ -109,7 +109,8 @@ class CreateReviewerForm extends ReviewerForm {
 		} else {
 			$user->setPassword(Validation::encryptCredentials($this->getData('username'), $password));
 		}
-		$user->setMustChangePassword(true); // Emailed P/W not safe
+		// [UPCH] no pedir cambio de password
+		$user->setMustChangePassword(false); // Emailed P/W not safe
 
 		$user->setDateRegistered(Core::getCurrentDate());
 		$reviewerId = $userDao->insertObject($user);
