@@ -33,12 +33,14 @@
 			<div class="pkp_navigation" id="headerNavigationContainer">
 
 				{* Logo or site title *}
-				<div class="pkp_site_name">
+				{* [UPCH] aumentando espacio entre dropdown de revistas y el menu *}
+				<div class="pkp_site_name" style="margin-top: 45px; margin-bottom: 45px;">
 					{if $currentContext && $multipleContexts}
 						{capture assign=homeUrl}{url journal="index" router=$smarty.const.ROUTE_PAGE}{/capture}
 					{else}
 						{capture assign=homeUrl}{url page="index" router=$smarty.const.ROUTE_PAGE}{/capture}
 					{/if}
+					{* [UPCH]
 					{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
 						<a href="{$homeUrl}" class="is_img">
 							<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}>
@@ -48,6 +50,10 @@
 							<img src="{$baseUrl}/templates/images/structure/logo.png">
 						</a>
 					{/if}
+					*}{* [UPCH] mostrar un mismo logo en el panel de todas las revistas/u. de gestion *}
+					<a href="{$homeUrl}" class="is_img" style="padding: 10px;">
+							<img src="{$baseUrl}/templates/images/structure/logo.png">
+					</a>
 				</div>
 
 				{* Primary navigation menu *}

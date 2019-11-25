@@ -34,8 +34,8 @@
 		{* Header *}
 		<header class="pkp_structure_head" id="headerNavigationContainer" role="banner">
 			<div class="pkp_head_wrapper">
-
-				<div class="pkp_site_name_wrapper">
+				{* [UPCH] aumentando espacio entre logo/titulo de la revista y el contenido *}
+				<div class="pkp_site_name_wrapper" style="margin-bottom: 35px;">
 					{* Logo or site title. Only use <h1> heading on the homepage.
 					   Otherwise that should go to the page title. *}
 					{if $requestedOp == 'index'}
