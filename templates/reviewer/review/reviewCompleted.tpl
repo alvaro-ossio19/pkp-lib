@@ -13,7 +13,7 @@
 <br />
 <div class="separator"></div>
 
-<p>{translate key="reviewer.complete.whatNext"}</p>
+<p>{translate key="reviewer.complete.whatNext" contextName=$contextName}</p>
 
 <!-- Display queries grid -->
 {capture assign="queriesGridUrl"}{url router=$smarty.const.ROUTE_COMPONENT component="grid.queries.QueriesGridHandler" op="fetchGrid" submissionId=$submission->getId() stageId=$smarty.const.WORKFLOW_STAGE_ID_EXTERNAL_REVIEW escape=false}{/capture}

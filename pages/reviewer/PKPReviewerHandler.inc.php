@@ -81,6 +81,7 @@ class PKPReviewerHandler extends Handler {
 			$templateMgr = TemplateManager::getManager($request);
 			$templateMgr->assign('submission', $reviewerSubmission);
 			$templateMgr->assign('step', 4);
+			$templateMgr->assign('contextName', $request->getContext()->getLocalizedName()); // [UPCH] nombre u. gestion
 			return $templateMgr->fetchJson('reviewer/review/reviewCompleted.tpl');
 		}
 	}
@@ -141,6 +142,8 @@ class PKPReviewerHandler extends Handler {
 		$reviewerAction = new ReviewerAction();
 		$email = $reviewerAction->getResponseEmail($reviewerSubmission, $reviewAssignment, $request, 1);
 		$templateMgr->assign('declineMessageBody', $email->getBody());
+
+		$templateMgr->assign('contextName', $request->getContext()->getLocalizedName()); // [UPCH] nombre u. gestion
 
 		return $templateMgr->fetchJson('reviewer/review/modal/regretMessage.tpl');
 	}

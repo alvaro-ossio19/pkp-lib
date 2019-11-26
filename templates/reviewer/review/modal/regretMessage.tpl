@@ -18,7 +18,7 @@
 
 <form class="pkp_form" id="declineReviewForm" method="post" action="{url op="saveDeclineReview" path=$submissionId|escape}">
 	{csrf}
-	<p>{translate key="reviewer.submission.declineReviewMessage"}</p>
+	<p>{translate key="reviewer.submission.declineReviewMessage" contextName=$contextName}</p>
 
 	{fbvFormArea id="declineReview"}
 		{fbvFormSection}

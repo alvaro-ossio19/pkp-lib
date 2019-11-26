@@ -15,7 +15,7 @@
 	<!-- Author Submission -->
 	<message key="author.submit.submissionCitations">Proporcione una lista de referencias con formato de las obras citadas en este envío. Separe cada referencia con una línea en blanco.</message>
 	<message key="submission.submit.submissionComplete">Envío completo</message>
-	<message key="submission.submit.submissionCompleteThanks">Gracias por su interés por publicar con {$contextName}.</message>
+	<!--[UPCH]--><message key="submission.submit.submissionCompleteThanks">Gracias por completar la documentación del proyecto en {$contextName}.</message>
 	<message key="submission.submit.whatNext">¿Y ahora qué?</message>
 	<message key="submission.submit.whatNext.forNow">Por ahora, usted puede:</message>
 	<message key="submission.submit.whatNext.review">Revisar este envío</message>
@@ -442,7 +442,7 @@
 	<message key="submission.status.editorial">En corrección de originales</message>
 	<message key="submission.status.production">En corrección de pruebas</message>
 	<message key="submission.status.review">En revisión</message>
-	<message key="submission.status.submission">A la espera de la decisión del editor/a</message>
+	<!--[UPCH]--><message key="submission.status.submission">A la espera de la decisión de la Unidad de Gestión</message>
 	<message key="submission.status.unassigned">Sin asignar</message>
 	<message key="submission.status.declined">Rechazado</message>
 	<message key="submission.status.published">Publicado</message>
@@ -558,7 +558,7 @@
 	<message key="notification.type.editorDecisionSendToProduction">Comenzó el proceso de producción.</message>
 	<message key="notification.type.editorAssignmentProduction">Debe asignarse un jefe/a de producción para que pueda comenzar el proceso de producción. Añada un jefe/a de producción a través del enlace Participantes que aparece arriba.</message>
 	<message key="notification.type.editorAssignmentEditing">Debe asignarse un editor/a para que pueda comenzar el proceso editorial. Añada a un jefe/a de producción a través del enlace Participantes que aparece arriba.</message>
-	<message key="submission.confirm.message">Se ha subido su envío y ya está listo para ser enviado. Puede volver atrás para revisar y ajustar la información que desee antes de continuar. Cuando esté listo haga clic en "Finalizar envío".</message>
+	<!--[UPCH]--><message key="submission.confirm.message">Se ha subido su envío y ya está listo para ser enviado a {$contextName}. Puede volver atrás para revisar y ajustar la información que desee antes de continuar. Cuando esté listo haga clic en "Finalizar envío".</message>
 	<message key="submission.submit.copyrightNoticeAgree">Estoy de acuerdo en cumplir los términos de la declaración de derechos de autor.</message>
 	<message key="submission.shortAuthor">{$author} et al.</message>
 	<message key="submission.comments.addReviews">Añade las revisiones al correo electrónico</message>
@@ -622,7 +622,7 @@
 	<message key="submission.changeFile">Cambia el archivo</message>
 	<message key="submission.identifiers">Identificadores</message>
 	<message key="submission.publisherId">Identificador público de la URL</message>
-	<message key="author.submission.roundStatus.reviewsReady">Se han enviado nuevas revisiones y están siendo consideradas por el editor/a.</message>
+	<!--[UPCH]--><message key="author.submission.roundStatus.reviewsReady">Se han enviado nuevas revisiones y están siendo consideradas por la Unidad de Gestión.</message>
 	<message key="submission.submit.copyrightNoticeAgreementLabel">Aceptar la declaración de derechos de autor</message>
 	<message key="submission.authorBiography">Biografía del autor/a</message>
 	<message key="submission.authorWithAffiliation">{$name}, {$affiliation}</message>
@@ -656,7 +656,7 @@
 	<message key="submission.list.galleysCreated">Galeradas creadas</message>
 	<message key="submission.list.filesPrepared">Archivos preparados</message>
 	<message key="submission.list.discussions">Discusiones abiertas</message>
-	<message key="submission.list.incompleteSubmissionNotice">El envío debe completarse antes de que un editor/a lo revise.</message>
+	<!--[UPCH]--><message key="submission.list.incompleteSubmissionNotice">El envío debe completarse antes de que la Unidad de Gestión lo revise.</message>
 	<message key="submission.howToCite.downloadCitation">Descargar Cita</message>
 	<message key="submission.submit.availableUserGroups">Enviar como</message>
 	<message key="submission.submit.availableUserGroupsDescription">Seleccione el rol que describa mejor su contribución a este envío.</message>

@@ -107,7 +107,7 @@ class ReviewReminder extends ScheduledTask {
 			'editorialContactSignature' => $context->getSetting('contactName') . "\n" . $context->getLocalizedName(),
 			'passwordResetUrl' => $dispatcher->url($request, ROUTE_PAGE, $context->getPath(), 'login', 'resetPassword', $reviewer->getUsername(), array('confirm' => Validation::generatePasswordResetHash($reviewer->getId()))),
 			'submissionReviewUrl' => $submissionReviewUrl,
-			'messageToReviewer' => __('reviewer.step1.requestBoilerplate'),
+			'messageToReviewer' => __('reviewer.step1.requestBoilerplate', array('contextName' => $context->getLocalizedName())), // [UPCH] nombre u. gestion
 			'abstractTermIfEnabled' => ($submission->getLocalizedAbstract() == '' ? '' : __('common.abstract')),
 		);
 		$email->assignParams($paramArray);

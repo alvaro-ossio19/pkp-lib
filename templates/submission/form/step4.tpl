@@ -19,7 +19,7 @@
 	<input type="hidden" name="submissionId" value="{$submissionId|escape}" />
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="submitStep4FormNotification"}
 
-	<p>{translate key="submission.confirm.message"}</p>
+	<p>{translate key="submission.confirm.message" contextName=$contextName}</p>
 
 	{fbvFormButtons id="step4Buttons" submitText="submission.submit.finishSubmission" confirmSubmit="submission.confirmSubmit"}
 </form>

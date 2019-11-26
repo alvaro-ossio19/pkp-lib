@@ -206,7 +206,7 @@ class ReviewerForm extends Form {
 				'editorialContactSignature' => $user->getContactSignature(),
 				'signatureFullName' => $user->getFullname(),
 				'passwordResetUrl' => $dispatcher->url($request, ROUTE_PAGE, $context->getPath(), 'login', 'lostPassword'),
-				'messageToReviewer' => __('reviewer.step1.requestBoilerplate'),
+				'messageToReviewer' => __('reviewer.step1.requestBoilerplate', array('contextName' => $context->getLocalizedName())), // [UPCH] nombre u. gestion
 				'abstractTermIfEnabled' => ($submission->getLocalizedAbstract() == '' ? '' : __('common.abstract')), // Deprecated; for OJS 2.x templates
 			));
 			$template->replaceParams();

@@ -64,7 +64,7 @@ class ReviewerReviewStep1Form extends ReviewerReviewForm {
 		));
 
 		// Add reviewer request text.
-		$templateMgr->assign('reviewerRequest', __('reviewer.step1.requestBoilerplate'));
+		$templateMgr->assign('reviewerRequest', __('reviewer.step1.requestBoilerplate', array('contextName' => $context->getLocalizedName()))); // [UPCH] nombre u. gestion
 
 		//
 		// Assign the link actions
@@ -86,7 +86,7 @@ class ReviewerReviewStep1Form extends ReviewerReviewForm {
 		// Instantiate the view review guidelines confirmation modal.
 		$aboutDueDateAction = new LinkAction('viewReviewGuidelines',
 			new ConfirmationModal(
-				__('reviewer.aboutDueDates.text'),
+				__('reviewer.aboutDueDates.text', array('contextName' => $context->getLocalizedName())), // [UPCH] nombre u. gestion
 				__('reviewer.aboutDueDates'),
 				'modal_information', null, '',
 				false

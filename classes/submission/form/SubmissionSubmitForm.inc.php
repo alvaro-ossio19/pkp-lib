@@ -61,6 +61,7 @@ class SubmissionSubmitForm extends Form {
 			$submissionProgress = 1;
 		}
 		$templateMgr->assign('submissionProgress', $submissionProgress);
+		$templateMgr->assign('contextName', $request->getContext()->getLocalizedName()); // [UPCH] nombre u. gestion
 		return parent::fetch($request, $template, $display);
 	}
 }
