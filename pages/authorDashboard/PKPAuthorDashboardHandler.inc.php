@@ -88,8 +88,6 @@ class PKPAuthorDashboardHandler extends Handler {
 		$workflowStages = WorkflowStageDAO::getStageStatusesBySubmission($submission, $stagesWithDecisions, $stageNotifications);
 		$templateMgr->assign('workflowStages', $workflowStages);
 
-		$templateMgr->assign('sidisiId', $submission->getSidisiId()); // [UPCH] cod sidisi en el header
-
 		return $templateMgr->display('authorDashboard/authorDashboard.tpl');
 	}
 

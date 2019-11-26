@@ -26,9 +26,8 @@
 
 	<div id="submissionHeader" class="pkp_page_header">
 		<div class="pkp_page_title">
-			{if $sidisiId != ''} {* [UPCH] mostrar codigo sidisi si se manda desde el controlador *}
-			<h1 class="pkp_submission_title">SIDISI N° {$sidisiId}</h1><hr>
-			{/if}
+			{* [UPCH] mostrar codigo sidisi si se manda desde el controlador *}
+			<h1 class="pkp_submission_title">SIDISI N° {$submission->getSidisiId()}</h1><hr>
 			<h1 class="pkp_submission_title">
 				<span class="pkp_screen_reader">{translate key="submission.submissionTitle"}</span>
 				{$submission->getLocalizedTitle()|escape}

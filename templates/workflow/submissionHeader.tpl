@@ -8,6 +8,8 @@
  * Include the submission progress bar
  *}
 <div class="pkp_page_title">
+	{* [UPCH] mostrar codigo sidisi si se manda desde el controlador *}
+	<h1 class="pkp_submission_title">SIDISI N° {$submission->getSidisiId()}</h1><hr>
 	<h1 class="pkp_submission_title">
 		<span class="pkp_screen_reader">{translate key="submission.submissionTitle"}</span>
 		{$submission->getLocalizedTitle()|escape}
