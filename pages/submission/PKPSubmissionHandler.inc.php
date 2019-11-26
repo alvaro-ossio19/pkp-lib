@@ -102,6 +102,7 @@ abstract class PKPSubmissionHandler extends Handler {
 		if ($submission) {
 			$templateMgr->assign('submissionId', $submission->getId());
 			$templateMgr->assign('submissionProgress', (int) $submission->getSubmissionProgress());
+			$templateMgr->assign('sidisiId', $submission->getSidisiId()); // [UPCH] cod sidisi en el header
 		} else {
 			$templateMgr->assign('submissionProgress', 1);
 		}

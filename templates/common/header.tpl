@@ -155,6 +155,9 @@
 				{** allow pages to provide their own titles **}
 				{if !$suppressPageTitle}
 					<div class="pkp_page_title">
+						{if $sidisiId != ''} {* [UPCH] mostrar codigo sidisi si se manda desde el controlador *}
+						<h1 class="pkp_submission_title">SIDISI N° {$sidisiId}</h1><hr>
+						{/if}
 						<h1>{$pageTitleTranslated}</h1>
 					</div>
 				{/if}

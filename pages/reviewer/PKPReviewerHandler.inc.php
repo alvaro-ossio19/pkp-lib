@@ -42,6 +42,8 @@ class PKPReviewerHandler extends Handler {
 		$templateMgr->assign('reviewStep', $reviewStep);
 		$templateMgr->assign('selected', $step - 1);
 
+		$templateMgr->assign('sidisiId', $reviewerSubmission->getSidisiId()); // [UPCH] cod sidisi en el header
+
 		$templateMgr->display('reviewer/review/reviewStepHeader.tpl');
 	}
 
