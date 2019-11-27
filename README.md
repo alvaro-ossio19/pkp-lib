@@ -1,7 +1,7 @@
-PKP Web Application Library para OJS 3.1.2 (SIDISI)
+PKP Web Application Library para OJS 3.1.2 (SIDISI Revisión Académica)
 =======
 
-> Esta es una version personalizada de la librería PKP para SIDISI. Esta versión de la librería es 3.1.2, que corresponse a la versión 3.1.2 de OJS.
+> Esta es una version personalizada de la librería PKP para SIDISI Revisión Académica. Esta versión de la librería es 3.1.2, que corresponse a la versión 3.1.2 de OJS.
 
 # Instalación
 
@@ -35,15 +35,16 @@ Volvemos a verificar los repositorios remotos:
 
 # Actualización con repositorio padre
 
-Vamos a la rama stable-3_1_2 (bifurcación):
+Vamos a la rama stable-3_1_2-upch-rev-aca en el fork:
 
     $ git remote update
     $ git fetch
     $ git checkout --track origin/stable-3_1_2
 
-Para fusionar los cambios del repositorio padre desde upstream/stable-3_1_2 con la rama origin/stable-3_1_2 (bifurcación):
+Para fusionar los cambios del repositorio padre desde upstream/stable-3_1_2 con la rama origin/stable-3_1_2 (fork):
 
     $ git pull upstream stable-3_1_2
+    $ git pull origin/stable-3_1_2 origin/stable-3_1_2-upch-rev-aca
     $ git push
 
 Vamos a la raíz de OJS para instalar o actualizar dependencias con Composer (https://getcomposer.org/):
