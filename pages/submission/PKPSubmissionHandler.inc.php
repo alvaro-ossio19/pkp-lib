@@ -49,6 +49,11 @@ abstract class PKPSubmissionHandler extends Handler {
 		// NB: Move this to its own policy for reuse when required in other places.
 		$submission = $this->getAuthorizedContextObject(ASSOC_TYPE_SUBMISSION);
 
+		// [UPCH] Bloquear la creacion manual de submissions ya que estos son creados por SIDISI
+		if (is_null($submission) || !($submission instanceof Article)) return false;
+		// [UPCH] si el proyecto esta archivado
+		if ($submission->getStatus() == UPCH_STATUS_ARCHIVED) return false;
+
 		// Permit if there is no submission set, but request is for initial step.
 		if (!is_a($submission, 'Submission') && $step == 1) return true;
 
@@ -93,12 +98,6 @@ abstract class PKPSubmissionHandler extends Handler {
 		$templateMgr->assign('sectionId', (int) $request->getUserVar('sectionId')); // to add a sectionId parameter to tab links in template
 
 		$submission = $this->getAuthorizedContextObject(ASSOC_TYPE_SUBMISSION);
-
-		// [UPCH] Bloquear la creacion manual de submissions ya que estos son creados por SIDISI
-		if (empty($args) || is_null($submission) || !($submission instanceof Article)) {
-			exit(UPCH_DISABLED_BY_SIDISI_MESSAGE);
-		}
-
 		if ($submission) {
 			$templateMgr->assign('submissionId', $submission->getId());
 			$templateMgr->assign('submissionProgress', (int) $submission->getSubmissionProgress());

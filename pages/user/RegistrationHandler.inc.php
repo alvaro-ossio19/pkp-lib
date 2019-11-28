@@ -19,6 +19,16 @@ import('pages.user.UserHandler');
 class RegistrationHandler extends UserHandler {
 
 	/**
+	 * [UPCH] No permitir acceso a la pagina.
+	 *
+	 * @copydoc PKPHandler::authorize()
+	 */
+	public function authorize($request, &$args, $roleAssignments) {
+		parent::authorize($request, $args, $roleAssignments);
+		return false;
+	}
+
+	/**
 	 * @see PKPHandler::initialize()
 	 */
 	function initialize($request) {
@@ -33,10 +43,6 @@ class RegistrationHandler extends UserHandler {
 	 * @param $request PKPRequest
 	 */
 	function register($args, $request) {
-
-		// [UPCH] bloquear formulario de registro de usuarios externos
-		exit(UPCH_DISABLED_BY_SIDISI_MESSAGE);
-
 		if (Config::getVar('security', 'force_login_ssl') && $request->getProtocol() != 'https') {
 			// Force SSL connections for registration
 			$request->redirectSSL();
