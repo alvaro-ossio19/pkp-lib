@@ -37,7 +37,13 @@ class ProfileHandler extends UserHandler {
 		import('lib.pkp.classes.security.authorization.UserRequiredPolicy');
 		$this->addPolicy(new UserRequiredPolicy($request));
 
-		return parent::authorize($request, $args, $roleAssignments);
+		/**
+		 * [UPCH] se bloquea el acceso al perfil a todos los usuarios que no sean administradores,
+		 * asi ninguno podra cambiar su informacion personal.
+		 * Es necesario llamar a parent::authorize() para visualizar los menus del usuario.
+		 */
+		parent::authorize($request, $args, $roleAssignments);
+		return Validation::isSiteAdmin();
 	}
 
 	/**
