@@ -24,7 +24,7 @@
 	<input type="hidden" name="submissionId" value="{$submissionId|escape}" />
 	{include file="controllers/notification/inPlaceNotification.tpl" notificationId="submitStep3FormNotification"}
 
-	{include file="core:submission/submissionMetadataFormTitleFields.tpl"}
+	{include file="core:submission/submissionMetadataFormTitleFields.tpl" readOnly=true} {*[UPCH]*}
 
 	{fbvFormArea id="contributors"}
 		<!--  Contributors -->
@@ -36,7 +36,7 @@
 
 	{include file="submission/form/categories.tpl"}
 
-	{include file="submission/submissionMetadataFormFields.tpl"}
+	{include file="submission/submissionMetadataFormFields.tpl" readOnly=true} {*[UPCH]*}
 
 	{fbvFormButtons id="step3Buttons" submitText="common.saveAndContinue"}
 </form>
