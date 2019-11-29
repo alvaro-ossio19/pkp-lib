@@ -51,8 +51,6 @@ abstract class PKPSubmissionHandler extends Handler {
 
 		// [UPCH] Bloquear la creacion manual de submissions ya que estos son creados por SIDISI
 		if (is_null($submission) || !($submission instanceof Article)) return false;
-		// [UPCH] si el proyecto esta archivado
-		if ($submission->getStatus() == UPCH_STATUS_ARCHIVED) return false;
 
 		// Permit if there is no submission set, but request is for initial step.
 		if (!is_a($submission, 'Submission') && $step == 1) return true;

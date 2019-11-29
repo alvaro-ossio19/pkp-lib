@@ -50,6 +50,10 @@ abstract class PKPWorkflowHandler extends Handler {
 			$this->addPolicy(new WorkflowStageAccessPolicy($request, $args, $roleAssignments, 'submissionId', $this->identifyStageId($request, $args), WORKFLOW_TYPE_EDITORIAL));
 		}
 
+		// [UPCH] validar que el submission no este archivado
+		import('lib.pkp.upch.classes.security.authorization.internal.UPCH_SubmissionNotArchivedPolicy');
+		$this->addPolicy(new UPCH_SubmissionNotArchivedPolicy($request, $args, 'submissionId'));
+
 		return parent::authorize($request, $args, $roleAssignments);
 	}
 

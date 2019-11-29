@@ -33,6 +33,9 @@ class SubmissionAccessPolicy extends ContextPolicy {
 		// We need a submission in the request.
 		import('lib.pkp.classes.security.authorization.internal.SubmissionRequiredPolicy');
 		$this->addPolicy(new SubmissionRequiredPolicy($request, $args, $submissionParameterName));
+		// [UPCH] validar que el submission no este archivado
+		import('lib.pkp.upch.classes.security.authorization.internal.UPCH_SubmissionNotArchivedPolicy');
+		$this->addPolicy(new UPCH_SubmissionNotArchivedPolicy($request, $args, $submissionParameterName));
 
 		// Authors, managers and sub editors potentially have
 		// access to submissions. We'll have to define differentiated
