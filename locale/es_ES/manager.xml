@@ -489,7 +489,7 @@
 	<message key="manager.navigationMenus.form.customUrlError">Debe proporcionar una URL</message>
 
 	<message key="manager.navigationMenus.form.conditionalDisplay">Aprenda más sobre cuándo de mostrará y esconderá este ítem de menú.</message>
-	<message key="manager.navigationMenus.form.submenuWarning">Cuando un ítem abre un submenú, ese enlace podría no funcionar en todos los dispositivos. Por ejemplo, si tiene un ítem "Acerca de" que abre un submenú "Contacto" y "Equipo editorial", el enlace "Acerca de" puede no ser accesible en todos los dispositivos. En el menú por defecto, se corrige este problema creando un segundo ítem de menú "Acerca de la revista", que aparece en el submenú.</message>
+	<!--[UPCH]--><message key="manager.navigationMenus.form.submenuWarning">Cuando un ítem abre un submenú, ese enlace podría no funcionar en todos los dispositivos. Por ejemplo, si tiene un ítem "Acerca de" que abre un submenú "Contacto" y "Equipo editorial", el enlace "Acerca de" puede no ser accesible en todos los dispositivos. En el menú por defecto, se corrige este problema creando un segundo ítem de menú "Acerca de la Unidad", que aparece en el submenú.</message>
 
 	<message key="manager.navigationMenus.form.navigationMenuItemType">Tipo de menú de navegación</message>
 	<message key="manager.navigationMenus.form.navigationMenuItemTypeMessage">Seleccione un tipo de menú de navegación predefinido o uno personalizado para crear el suyo</message>
@@ -497,10 +497,10 @@
 	<message key="manager.navigationMenus.customPage.description">Crear una página personalizada en su OJS y enlacela desde un menu de navegación.</message>
 	<message key="manager.navigationMenus.remoteUrl">URL remota</message>
 	<message key="manager.navigationMenus.remoteUrl.description">Enlace a cualquier URL en otro sitio web, como por ejemplo https://pkp.sfu.ca.</message>
-	<message key="manager.navigationMenus.about.description"><![CDATA[Enlace a una página mostrando el contenido de Acerca de la revista en Ajustes > Revista]]></message>
-	<message key="manager.navigationMenus.about.conditionalWarning"><![CDATA[Este enlace solo se mostrará si ha completado la sección Acerca de esta revista bajo Ajustes > Revista.]]></message>
-	<message key="manager.navigationMenus.editorialTeam.description"><![CDATA[Enlace a una página mostrándo el contenido de la cabecera en Ajustes > Revista]]></message>
-	<message key="manager.navigationMenus.editorialTeam.conditionalWarning"><![CDATA[Este enlace solo se mostrará si ha completado la sección equipo editorial en Ajustes > Revista.]]></message>
+	<!--[UPCH]--><message key="manager.navigationMenus.about.description"><![CDATA[Enlace a una página mostrando el contenido de Acerca de la Unidad en Ajustes > Unidad]]></message>
+	<!--[UPCH]--><message key="manager.navigationMenus.about.conditionalWarning"><![CDATA[Este enlace solo se mostrará si ha completado la sección Acerca de esta Unidad bajo Ajustes > Unidad.]]></message>
+	<!--[UPCH]--><message key="manager.navigationMenus.editorialTeam.description"><![CDATA[Enlace a una página mostrándo el contenido de la cabecera en Ajustes > Unidad]]></message>
+	<!--[UPCH]--><message key="manager.navigationMenus.editorialTeam.conditionalWarning"><![CDATA[Este enlace solo se mostrará si ha completado la sección equipo editorial en Ajustes > Unidad.]]></message>
 	<message key="manager.navigationMenus.submissions.description">Enlace a las Instrucciones de envío.</message>
 	<message key="manager.navigationMenus.current.description">Enlace al Número actual.</message>
 	<message key="manager.navigationMenus.archives.description">Enlace al Archivo de números anteriores.</message>
