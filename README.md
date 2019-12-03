@@ -3,10 +3,11 @@ PKP Web Application Library para OJS 3.1.2 (SIDISI Revisión Académica)
 
 > Esta es una version personalizada de la librería PKP para SIDISI Revisión Académica. Esta versión de la librería es 3.1.2, que corresponse a la versión 3.1.2 de OJS. Asegurarse de trabajar en la rama stable-3_1_2-upch-rev-aca para esta versión, no confundir con stable-3_1_2 que es la rama original.
 
-# Instalación
+# Instalación en OJS (solo una vez)
 
 Ejecutar en terminal en la carpeta de OJS:
 
+    $ git checkout stable-3_1_2-upch-rev-aca
     $ git submodule add https://github.com/alvaro-ossio19/pkp-lib.git  lib/pkp
 
 Esto habrá agregado la librería como submodulo en OJS en el archivo .gitmodules:
@@ -15,13 +16,16 @@ Esto habrá agregado la librería como submodulo en OJS en el archivo .gitmodule
 	path = lib/pkp
 	url = https://github.com/alvaro-ossio19/pkp-lib.git
 
-Verificar los repositorios remotos del proyecto:
+# Agregar repositorio padre de lib/pkp
 
+Verificar los remotes de repositorio del proyecto en nuestro local:
+
+    $ cd lib/pkp
     $ git remote -v
     > origin  https://github.com/alvaro-ossio19/pkp-lib.git (fetch)
     > origin  https://github.com/alvaro-ossio19/pkp-lib.git (push)
 
-Si no existe el repositorio original, hacer lo siguiente:
+Si no existe el remote del repositorio padre, hacer lo siguiente:
 
     $ git remote add upstream https://github.com/pkp/pkp-lib.git
 
@@ -33,23 +37,20 @@ Volvemos a verificar los repositorios remotos:
     > upstream      https://github.com/pkp/pkp-lib.git (fetch)
     > upstream      https://github.com/pkp/pkp-lib.git (push)
 
-# Actualización con repositorio padre
+# Actualización con rama stable-3_1_2 del repositorio padre
 
-Vamos a la rama stable-3_1_2-upch-rev-aca en el fork:
+Sincronizamos los repositorios remotos:
 
     $ git remote update
-    $ git fetch upstream
-    $ git fetch
 
-Si es la primera vez que iremos a las ramas stable-3_1_2 y stable-3_1_2-upch-rev-aca del fork:
+Si es la primera vez que iremos a la rama stable-3_1_2-upch-rev-aca del fork:
 
-    $ git checkout --track origin/stable-3_1_2
     $ git checkout --track origin/stable-3_1_2-upch-rev-aca
 
-Para fusionar los cambios del repositorio padre desde upstream/stable-3_1_2 con la rama origin/stable-3_1_2 (fork):
+Para fusionar los cambios del repositorio padre desde upstream/stable-3_1_2 con la rama origin/stable-3_1_2-upch-rev-aca (fork):
 
+    $ git checkout stable-3_1_2-upch-rev-aca
     $ git pull upstream stable-3_1_2
-    $ git pull origin/stable-3_1_2 origin/stable-3_1_2-upch-rev-aca
     $ git push
 
 Vamos a la raíz de OJS para instalar o actualizar dependencias con Composer (https://getcomposer.org/):
@@ -63,6 +64,14 @@ Para crear un tag, nos vamos a la rama stable-3_1_2-upch-rev-aca del fork:
 
     $ git checkout stable-3_1_2-upch-rev-aca
     $ git tag 'ojs-3_1_2-2_upch-rev-aca' -a
+    $ git push --tags
+
+## Sincronizar tags con upstream
+
+Cuando salen nuevas versiones de lib/pkp se crean nuevos tags en el repositorio padre. Para sincronizarlos con el fork:
+
+    $ git fetch upstream
+    $ git push
     $ git push --tags
 
 PKP Web Application Library
