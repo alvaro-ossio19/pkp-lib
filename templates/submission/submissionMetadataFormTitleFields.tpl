@@ -10,10 +10,10 @@
  *}
 <div class="pkp_helpers_clear">
 	{fbvFormSection for="title" title="common.prefix" inline="true" size=$fbvStyles.size.SMALL}
-		{fbvElement label="common.prefixAndTitle.tip" type="text" multilingual=true name="prefix" id="prefix" value=$prefix readonly=$readOnly maxlength="32" disabled=true} {*[UPCH]*}
+		{fbvElement label="common.prefixAndTitle.tip" type="text" multilingual=true name="prefix" id="prefix" value=$prefix readonly=$readOnly disabled=true} {*[UPCH] disabled y maxlength eliminado*}
 	{/fbvFormSection}
 	{fbvFormSection for="title" title="common.title" inline="true" size=$fbvStyles.size.LARGE required=true}
-		{fbvElement type="text" multilingual=true name="title" id="title" value=$title readonly=$readOnly maxlength="255" required=true}
+		{fbvElement type="text" multilingual=true name="title" id="title" value=$title readonly=$readOnly required=true} {*[UPCH] maxlength eliminado *}
 	{/fbvFormSection}
 </div>
 {fbvFormSection title="common.subtitle" for="subtitle"}
